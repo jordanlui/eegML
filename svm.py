@@ -49,16 +49,17 @@ y=y['y']
 if len(x) < len(y):
     y=y[0:len(x)] # cut down length of y if our x is shorter
 
-
-# Shuffle our data
-
+# Manual Cross Validation
+number_attempts = 5
 performance =[]
+percent_training = 0.9 # percent of data we want to train on
 
-for i in range(0,50):
+for i in range(0,number_attempts):
+    # Shuffle our data
     [x,y] = unison_shuffled_copies(x,y)
     
-    # Segment our data
-    percent_training = 0.9 # percent of data we want to train on
+    # Segment our data to train and test
+    
     segment = int(len(x) * percent_training) # Segment of data that we train on, rounded to an integer 
     x_train = x[:segment,:]
     x_test = x[segment:,:]
