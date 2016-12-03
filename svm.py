@@ -33,10 +33,17 @@ cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])
 cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
 
 # Load our data
-x = np.genfromtxt('../data/seed/x_de_LDS.csv', delimiter=',')
+x1 = np.genfromtxt('../data/seed/x_de_LDS.csv', delimiter=',')
+x2 = np.genfromtxt('../data/seed/x_de_movingAve.csv', delimiter=',')
 y = sio.loadmat('../data/seed/y.mat')
 y=y['y']
 y=y[0:660] # cut down length of y if our x is shorter
+
+# Join our matrices
+x3 = np.concatenate((x1,x2),axis=1)
+x = x3
+
+
 
 # Shuffle our data
 [x,y] = unison_shuffled_copies(x,y)
