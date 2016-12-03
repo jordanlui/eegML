@@ -33,15 +33,17 @@ cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])
 cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
 
 # Load our data
-x1 = sio.loadmat('../data/seed/processed/de_lds.mat')
-x1 = np.asarray(x1['xmatrix'])
+#x1 = sio.loadmat('../data/seed/processed/de_lds.mat')
+#x1 = np.asarray(x1['xmatrix'])
+#x2 = sio.loadmat('../data/seed/processed/de_movingave.mat')
+#x2 = np.asarray(x2['xmatrix'])
+#
+## Join our matrices
+#x3 = np.concatenate((x1,x2),axis=1)
 
-x2 = sio.loadmat('../data/seed/processed/de_movingave.mat')
-x2 = np.asarray(x2['xmatrix'])
-
-
-# Join our matrices
-x3 = np.concatenate((x1,x2),axis=1)
+# Load the big x matrix instead
+x3 = sio.loadmat('../data/seed/processed/xbig.mat')
+x3 = np.asarray(x3['matrix'])
 x = x3
 
 y = sio.loadmat('../data/seed/y.mat')
@@ -50,7 +52,7 @@ if len(x) < len(y):
     y=y[0:len(x)] # cut down length of y if our x is shorter
 
 # Manual Cross Validation
-number_attempts = 5
+number_attempts = 15
 performance =[]
 percent_training = 0.9 # percent of data we want to train on
 
