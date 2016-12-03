@@ -8,6 +8,7 @@ Created on Wed Nov 30 20:57:15 2016
 # EEG Machine Learning Project
 
 # Initialize
+from __future__ import division
 import scipy.io as sio
 import matplotlib.pyplot as plt
 import numpy as np
@@ -40,13 +41,16 @@ y_train = y[:segment,:]
 y_test = y[segment:,:]
 
 # Machine Learning
-clf = svm.SVC(decision_function_shape='ovo')
+# Regular Classification
+clf = svm.SVC()
 clf.fit(x_train,y_train)
 
 
 # Test Model
 testdata = clf.predict(x_test)
+testdata = np.reshape(testdata,(len(testdata),1)) # reshape the data
 compare = testdata==y_test
-error = len(y_test) - sum(compare)
+numcorrect = np.sum(compare)
+accuracy = numcorrect / len(testdata) * 100 # This is the correct percentage
 
 #plt.show()
