@@ -9,11 +9,11 @@ Created on Wed Nov 30 20:57:15 2016
 
 # Initialize
 import scipy.io as sio
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import neighbors, datasets
+#from sklearn import neighbors, datasets
 import glob, os
-import csv
+#import csv
 
 def DEfunc(x):
     # Accepts a vector and calculates the Differential Entropy
@@ -21,6 +21,7 @@ def DEfunc(x):
     de = 0.5 * np.log10(2 * 3.14159 * 2.71828 * sigma**2)
     return de
     
+
 
 #data = [sio.loadmat('../data/seed/jianglin_20140404.mat')]
 #data.append(sio.loadmat('../data/seed/jianglin_20140413.mat'))
